@@ -590,6 +590,7 @@ namespace gbXMLSerializer
         //[XmlElement(IsNullable = false, ElementName = "Material")]
         //public Material[] Materials;
 
+        [XmlIgnore]
         public versionEnum version { get; set; }
 
         [XmlAttribute(AttributeName ="version")]
