@@ -1373,7 +1373,7 @@ namespace gbXMLSerializer
         public PlanarGeometry PlanarGeometry { get; set; }
         [XmlElement(ElementName = "Opening", IsNullable = false)]
         public Opening[] Opening { get; set; }
-        [XmlIgnore]
+        [XmlAttribute(AttributeName = "exposedToSun")]
         public bool exposedToSunField;
         [XmlElement(IsNullable=false)]
         public CADObjectId CADObjectId { get; set; }
