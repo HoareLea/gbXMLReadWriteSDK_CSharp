@@ -93,6 +93,10 @@ namespace gbXMLSerializer
         public BuildingStorey[] bldgStories { get; set; }
         [XmlElement("Space")]
         public Space[] Spaces { get; set; }
+        [XmlElement("Name")]
+        public string Name { get; set; }
+        [XmlElement("Description")]
+        public string Description { get; set; }
     }
 
     [Serializable]
@@ -589,6 +593,10 @@ namespace gbXMLSerializer
         //public Layer[] Layers;
         //[XmlElement(IsNullable = false, ElementName = "Material")]
         //public Material[] Materials;
+        [XmlElement(IsNullable = true, ElementName = "DocumentHistory")]
+        public DocumentHistory DocumentHistory;
+        [XmlElement(IsNullable = true, ElementName = "CreatedBy")]
+        public CreatedBy CreatedBy;
 
         [XmlIgnore]
         public versionEnum version { get; set; }
