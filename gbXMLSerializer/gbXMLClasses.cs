@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.Globalization;
 using System.ComponentModel;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
-
+using System.Reflection;
 
 namespace gbXMLSerializer
 {
@@ -563,8 +563,6 @@ namespace gbXMLSerializer
         [XmlAttribute]
         public volumeUnitEnum volumeUnit { get; set; }
         [XmlAttribute]
-        public versionEnum version { get; set; }
-        [XmlAttribute]
         public string useSIUnitsForResults { get; set; }
 
         [XmlElement(IsNullable = false)]
@@ -591,6 +589,28 @@ namespace gbXMLSerializer
         //public Layer[] Layers;
         //[XmlElement(IsNullable = false, ElementName = "Material")]
         //public Material[] Materials;
+
+        public versionEnum version { get; set; }
+
+        [XmlAttribute(AttributeName ="version")]
+        public string versionDescription
+        {
+            get
+            {
+                DescriptionAttribute[] descriptionAttributes = typeof(versionEnum).GetField(version.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+
+                return descriptionAttributes[0].Description;
+            }
+            set
+            {
+                foreach(versionEnum version in Enum.GetValues(typeof(versionEnum)))
+                {
+                    DescriptionAttribute[] descriptionAttributes = typeof(versionEnum).GetField(version.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+                    if (descriptionAttributes[0].Description.Equals(value))
+                        this.version = version; 
+                }
+            }
+        }
 
     }
 
