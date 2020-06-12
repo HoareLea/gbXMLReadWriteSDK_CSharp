@@ -920,6 +920,9 @@ namespace gbXMLSerializer
         [XmlElement(ElementName = "PlanarGeometry")]
         public PlanarGeometry pg { get; set; }
 
+        [XmlElement(IsNullable = true, ElementName = "CADObjectId")]
+        public CADObjectId CADObjectId { get; set; }
+
     }
 
     public enum openingTypeEnum
