@@ -421,12 +421,16 @@ namespace gbXMLSerializer
     [XmlRootAttribute(ElementName = "gbXML", IsNullable = false, Namespace = "http://www.gbxml.org/schema")]
     public class DocumentHistory
     {
-        [XmlAttribute]
-        public string id { get; set; }
-        [XmlElement]
+        //[XmlAttribute]
+        //public string id { get; set; }
+        [XmlElement(IsNullable = false)]
         public ProgramInfo ProgramInfo { get; set; }
-        [XmlElement]
+        [XmlElement(IsNullable = false)]
         public PersonInfo PersonInfo { get; set; }
+        [XmlElement(IsNullable = false)]
+        public CreatedBy CreatedBy { get; set; }
+        [XmlElement(IsNullable = false)]
+        public ModifiedBy ModifiedBy { get; set; }
     }
 
     [Serializable]
@@ -595,8 +599,8 @@ namespace gbXMLSerializer
         //public Material[] Materials;
         [XmlElement(IsNullable = true, ElementName = "DocumentHistory")]
         public DocumentHistory DocumentHistory;
-        [XmlElement(IsNullable = true, ElementName = "CreatedBy")]
-        public CreatedBy CreatedBy;
+        //[XmlElement(IsNullable = true, ElementName = "CreatedBy")]
+        //public CreatedBy CreatedBy;
 
         [XmlIgnore]
         public versionEnum version { get; set; }
@@ -887,6 +891,18 @@ namespace gbXMLSerializer
         public string materialIdRef { get; set; }
         [XmlAttribute]
         public double percentOfLayer { get; set; }
+    }
+
+    [Serializable]
+    [XmlRootAttribute(ElementName = "gbXML", IsNullable = false, Namespace = "http://www.gbxml.org/schema")]
+    public class ModifiedBy
+    {
+        [XmlAttribute]
+        public string personId { get; set; }
+        [XmlAttribute]
+        public string programId { get; set; }
+        [XmlAttribute]
+        public DateTime date { get; set; }
     }
 
     [Serializable]
