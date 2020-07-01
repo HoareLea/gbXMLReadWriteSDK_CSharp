@@ -1415,6 +1415,7 @@ namespace gbXMLSerializer
         ExteriorWall,
         Roof,
         InteriorFloor,
+        ExposedFloor,
         Shade,
         UndergroundWall,
         UndergroundSlab,
